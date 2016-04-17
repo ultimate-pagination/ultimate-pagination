@@ -2,7 +2,12 @@
   "name": "ultimate-pagination",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/ultimate-pagination.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "webpack",
