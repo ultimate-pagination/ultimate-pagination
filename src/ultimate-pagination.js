@@ -1,41 +1,29 @@
-(function() {
-    'use strict';
+import {createRange} from './ultimate-pagination-utils';
 
-    window.ultimatePagination = {
-        getPaginationModel: getPaginationModel
-    };
+export function getPaginationModel(currentPage, totalPages) {
+  let paginationModel = [];
 
-    function getPaginationModel(currentPage, totalPages) {
-        var paginationModel = [];
+  // Always add the first page
+  paginationModel.push(1);
 
-        // Always add the first page
-        paginationModel.push(1);
+  // Show '...' between the first page and main pages group if needed
+  if(currentPage > 3) {
+    paginationModel.push('...');
+  }
 
-        // Show '...' between the first page and main pages group if needed
-        if(currentPage > 3) {
-            paginationModel.push('...');
-        }
+  // Add pages +/- from the current page
+  let mainPagesStart = Math.max(currentPage - 1, 2);
+  let mainPagesEnd = Math.min(currentPage + 1, totalPages - 1);
+  let mainPages = createRange(mainPagesStart,  mainPagesEnd);
+  paginationModel.push(...mainPages);
 
-        // Add pages +/- from the current page
-        var mainPages = _createRange(Math.max(currentPage - 1, 2),  Math.min(currentPage + 1, totalPages - 1));
-        paginationModel.push.apply(paginationModel, mainPages);
+  // Show '...' between main pages group and the last page if needed
+  if(currentPage < totalPages - 2) {
+    paginationModel.push('...');
+  }
 
-        // Show '...' between main pages group and the last page if needed
-        if(currentPage < totalPages - 2) {
-            paginationModel.push('...');
-        }
+  // Always add the last page
+  paginationModel.push(totalPages);
 
-        // Always add the last page
-        paginationModel.push(totalPages);
-
-        return paginationModel;
-    }
-
-    function _createRange(start, end) {
-        var range = [];
-        for (var i = start; i <= end; i++) {
-            range.push(i);
-        }
-        return range;
-    }
-})();
+  return paginationModel;
+}
