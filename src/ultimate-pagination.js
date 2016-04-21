@@ -1,14 +1,26 @@
 import {createRange} from './ultimate-pagination-utils';
-import {createPageFunctionFactory, createFirstEllipsis, createSecondEllipsis} from './ultimate-pagination-item-factories';
+import {
+  createPageFunctionFactory,
+  createFirstEllipsis,
+  createSecondEllipsis,
+  createFirstPageLink,
+  createPreviousPageLink,
+  createNextPageLink,
+  createLastPageLink
+} from './ultimate-pagination-item-factories';
 
-export function getPaginationModel(currentPage, totalPages) {
+export function getPaginationModel(options) {
+  const {currentPage, totalPages} = options;
   const paginationModel = [];
-  const createPage = createPageFunctionFactory(currentPage);
+  const createPage = createPageFunctionFactory(options);
 
   // Calculate group of central pages
   const mainPagesStart = Math.max(currentPage - 1, 3) - Math.max(0, currentPage + 3 - totalPages);
   const mainPagesEnd = Math.min(currentPage + 1, totalPages - 2) + Math.max(0, 4 - currentPage);
   const mainPages = createRange(mainPagesStart,  mainPagesEnd).map(createPage);
+
+  paginationModel.push(createFirstPageLink(options));
+  paginationModel.push(createPreviousPageLink(options));
 
   // Always add the first page
   paginationModel.push(createPage(1));
@@ -32,8 +44,10 @@ export function getPaginationModel(currentPage, totalPages) {
 
   // Always add the last page
   paginationModel.push(createPage(totalPages));
+  paginationModel.push(createNextPageLink(options));
+  paginationModel.push(createLastPageLink(options));
 
   return paginationModel;
 }
 
-export {ITEM_TYPES} from './ultimate-pagination-constants';
+export {ITEM_TYPES, ITEM_KEYS} from './ultimate-pagination-constants';
