@@ -2,10 +2,10 @@ module.exports = {
   entry: './src/ultimate-pagination.js',
   output: {
     path: './dist',
-    filename: 'ultimate-pagination.js',
     library: 'ultimatePagination',
     libraryTarget: 'umd'
   },
+  devtool: 'source-map',
   module: {
     loaders: [
       {
