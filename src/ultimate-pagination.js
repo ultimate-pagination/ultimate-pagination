@@ -27,7 +27,7 @@ export function getPaginationModel(options) {
 
   // Show '...' or second page between the last page and main pages group if needed
   if (mainPagesStart > 3) {
-    paginationModel.push(createFirstEllipsis());
+    paginationModel.push(createFirstEllipsis(mainPagesStart - 1));
   } else {
     paginationModel.push(createPage(2));
   }
@@ -37,7 +37,7 @@ export function getPaginationModel(options) {
 
   // Show '...' or penult page between main pages group and the last page if needed
   if (mainPagesEnd < totalPages - 2) {
-    paginationModel.push(createSecondEllipsis());
+    paginationModel.push(createSecondEllipsis(mainPagesEnd + 1));
   } else {
     paginationModel.push(createPage(totalPages - 1));
   }

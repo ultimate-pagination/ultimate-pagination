@@ -1,16 +1,20 @@
 import {ITEM_TYPES, ITEM_KEYS} from './ultimate-pagination-constants';
 
-export const createFirstEllipsis = () => {
+export const createFirstEllipsis = (value) => {
   return {
     type: ITEM_TYPES.ELLIPSIS,
-    key: ITEM_KEYS.FIRST_ELLIPSIS
+    key: ITEM_KEYS.FIRST_ELLIPSIS,
+    value,
+    isActive: false
   };
 };
 
-export const createSecondEllipsis = () => {
+export const createSecondEllipsis = (value) => {
   return {
     type: ITEM_TYPES.ELLIPSIS,
-    key: ITEM_KEYS.SECOND_ELLISPIS
+    key: ITEM_KEYS.SECOND_ELLISPIS,
+    value,
+    isActive: false
   };
 };
 
