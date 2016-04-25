@@ -115,10 +115,10 @@ As a result `getPaginationModel(options)` returns an array of items that can be 
 In this example `ITEM_TYPES` and `ITEM_KEYS` can be imported from **ultimate-pagination** module, and they contain constants used in the output of the pagination model.
 
 All item has the same structure:
-- *type*: string - type of item that can be one of `ITEM_TYPES`
-- *key*: number - unique number that can be used in libraries that need a key to render a collection of components (`key` in React, `track by` in Angular)
-- *value*: number - number of pages that user should navigate to when item is activated (for items with type `PAGE` it also can be used as a label in UI)
-- *isActive*: boolean - show if `currentPage` if the same as `value` of an item (can be used to highlight a current page or disable first, previous, next or last page links when user is already on first/last page)
+- **type**: *string* - type of item that can be one of `ITEM_TYPES`
+- **key**: *number* - unique number that can be used in libraries that need a key to render a collection of components (`key` in React, `track by` in Angular)
+- **value**: *number* - number of pages that user should navigate to when item is activated (for items with type `PAGE` it also can be used as a label in UI)
+- **isActive**: *boolean* - show if `currentPage` if the same as `value` of an item (can be used to highlight a current page or disable first, previous, next or last page links when user is already on first/last page)
 
 Here is a list that contains all available `ITEM_TYPES`:
 - `PAGE` - a link to a page
