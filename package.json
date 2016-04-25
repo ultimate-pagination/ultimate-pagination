@@ -1,7 +1,12 @@
 {
   "name": "ultimate-pagination",
-  "version": "0.5.1",
-  "description": "",
+  "version": "0.5.2",
+  "description": "Universal pagination model generation algorithm that can be used to build a UI component",
+  "keywords": [
+    "pagination",
+    "paginator",
+    "pager"
+  ],
   "main": "lib/ultimate-pagination.js",
   "files": [
     "dist",
