@@ -1,3 +1,5 @@
+[![ultimate-pagination logo](https://raw.githubusercontent.com/ultimate-pagination/logo/master/ultimate-pagination-250x250.png)](https://github.com/ultimate-pagination/ultimate-pagination)
+
 # ultimate-pagination
 
 [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url]
