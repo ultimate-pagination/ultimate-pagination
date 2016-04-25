@@ -1,5 +1,7 @@
 # ultimate-pagination
 
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url]
+
 Universal pagination model generation algorithm that can be used to build a UI component for any JS based platform/framework. The idea behind this module is to move logic of building pagination out of the component and place it in a separate module. It allows to reuse the same code across different frameworks like: Angular, Angular2, React, Ember and etc. Also the same code can be used to generate pagination on server side JavaScript frameworks.
 
 # Integrations
@@ -13,3 +15,7 @@ Here is a list of modules that uses *ultimate-pagination* to implement paginatio
 - [ember-ultimate-pagination](https://github.com/ultimate-pagination/ember-ultimate-pagination)
 - [aurelia-ultimate-pagination](https://github.com/ultimate-pagination/aurelia-ultimate-pagination)
 - [polymer-ultimate-pagination](https://github.com/ultimate-pagination/polymer-ultimate-pagination)
+
+[downloads-image]: https://img.shields.io/npm/dm/ultimate-pagination.svg
+[npm-url]: https://www.npmjs.com/package/ultimate-pagination
+[npm-image]: https://img.shields.io/npm/v/ultimate-pagination.svg
