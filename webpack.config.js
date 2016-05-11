@@ -1,21 +1,24 @@
 module.exports = {
-  entry: './src/ultimate-pagination.js',
+  entry: './src/ultimate-pagination.ts',
   output: {
     path: './dist',
     library: 'ultimatePagination',
     libraryTarget: 'umd'
   },
   devtool: 'source-map',
+  resolve: {
+    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+  },
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.tsx?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015']
-        }
+        loader: 'ts-loader'
       }
+    ],
+    preLoaders: [
+      { test: /\.js$/, loader: "source-map-loader" }
     ]
   }
 };

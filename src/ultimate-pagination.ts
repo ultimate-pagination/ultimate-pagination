@@ -6,12 +6,18 @@ import {
   createFirstPageLink,
   createPreviousPageLink,
   createNextPageLink,
-  createLastPageLink
+  createLastPageLink,
+  PaginationModelItem
 } from './ultimate-pagination-item-factories';
 
-export function getPaginationModel(options) {
+export interface PaginationModelOptions {
+  currentPage: number
+  totalPages: number
+}
+
+export function getPaginationModel(options: PaginationModelOptions) {
   const {currentPage, totalPages} = options;
-  const paginationModel = [];
+  const paginationModel: PaginationModelItem[] = [];
   const createPage = createPageFunctionFactory(options);
 
   // Calculate group of central pages
