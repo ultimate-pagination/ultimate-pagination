@@ -21,8 +21,8 @@ export function getPaginationModel(options: PaginationModelOptions) {
   const createPage = createPageFunctionFactory(options);
 
   // Calculate group of central pages
-  const mainPagesStart = Math.max(currentPage - 1, 3) - Math.max(0, currentPage + 3 - totalPages);
-  const mainPagesEnd = Math.min(currentPage + 1, totalPages - 2) + Math.max(0, 4 - currentPage);
+  const mainPagesStart = Math.max(2, Math.max(currentPage - 1, 3) - Math.max(0, currentPage + 3 - totalPages));
+  const mainPagesEnd = Math.min(totalPages - 1, Math.min(currentPage + 1, totalPages - 2) + Math.max(0, 4 - currentPage));
   const mainPages = createRange(mainPagesStart,  mainPagesEnd).map(createPage);
 
   paginationModel.push(createFirstPageLink(options));
@@ -34,7 +34,7 @@ export function getPaginationModel(options: PaginationModelOptions) {
   // Show '...' or second page between the last page and main pages group if needed
   if (mainPagesStart > 3) {
     paginationModel.push(createFirstEllipsis(mainPagesStart - 1));
-  } else {
+  } else if (mainPagesStart !== 2) {
     paginationModel.push(createPage(2));
   }
 
@@ -44,12 +44,13 @@ export function getPaginationModel(options: PaginationModelOptions) {
   // Show '...' or penult page between main pages group and the last page if needed
   if (mainPagesEnd < totalPages - 2) {
     paginationModel.push(createSecondEllipsis(mainPagesEnd + 1));
-  } else {
+  } else if (mainPagesEnd !== totalPages - 1) {
     paginationModel.push(createPage(totalPages - 1));
   }
 
-  // Always add the last page
-  paginationModel.push(createPage(totalPages));
+  if (totalPages > 1) {
+    paginationModel.push(createPage(totalPages));
+  }
   paginationModel.push(createNextPageLink(options));
   paginationModel.push(createLastPageLink(options));
 
