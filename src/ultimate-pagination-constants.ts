@@ -14,21 +14,21 @@ export type PaginationItemType =
   LastPageLinkItemType;
 
 export interface ItemTypes {
-    PAGE: PageItemType
-    ELLIPSIS: EllipsisItemType
-    FIRST_PAGE_LINK: FirstPageLinkItemType
-    PREVIOS_PAGE_LINK: PreviousPageLinkItemType
-    NEXT_PAGE_LINK: NextPageLinkItemType
-    LAST_PAGE_LINK: LastPageLinkItemType
+    PAGE: PageItemType;
+    ELLIPSIS: EllipsisItemType;
+    FIRST_PAGE_LINK: FirstPageLinkItemType;
+    PREVIOS_PAGE_LINK: PreviousPageLinkItemType;
+    NEXT_PAGE_LINK: NextPageLinkItemType;
+    LAST_PAGE_LINK: LastPageLinkItemType;
 }
 
 export interface ItemKeys {
-    FIRST_ELLIPSIS: number
-    SECOND_ELLISPIS: number
-    FIRST_PAGE_LINK: number
-    PREVIOS_PAGE_LINK: number
-    NEXT_PAGE_LINK: number
-    LAST_PAGE_LINK: number
+    FIRST_ELLIPSIS: number;
+    SECOND_ELLISPIS: number;
+    FIRST_PAGE_LINK: number;
+    PREVIOS_PAGE_LINK: number;
+    NEXT_PAGE_LINK: number;
+    LAST_PAGE_LINK: number;
 }
 
 export const ITEM_TYPES: ItemTypes = {
@@ -47,5 +47,5 @@ export const ITEM_KEYS: ItemKeys = {
   PREVIOS_PAGE_LINK: -4,
   NEXT_PAGE_LINK: -5,
   LAST_PAGE_LINK: -6
-}
+};
 

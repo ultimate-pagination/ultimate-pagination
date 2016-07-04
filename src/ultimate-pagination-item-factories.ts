@@ -2,10 +2,10 @@ import {ITEM_TYPES, ITEM_KEYS, PaginationItemType} from './ultimate-pagination-c
 import {PaginationModelOptions} from './ultimate-pagination';
 
 export interface PaginationModelItem {
-    key: number
-    value: number
-    isActive: boolean
-    type: PaginationItemType
+    key: number;
+    value: number;
+    isActive: boolean;
+    type: PaginationItemType;
 }
 
 export const createFirstEllipsis = (pageNumber: number): PaginationModelItem => {
@@ -81,4 +81,4 @@ export const createPageFunctionFactory = (options: PaginationModelOptions) => {
       isActive: pageNumber === currentPage
     };
   };
-}
+};

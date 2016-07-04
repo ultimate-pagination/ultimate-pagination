@@ -11,8 +11,8 @@ import {
 } from './ultimate-pagination-item-factories';
 
 export interface PaginationModelOptions {
-  currentPage: number
-  totalPages: number
+  currentPage: number;
+  totalPages: number;
 }
 
 export function getPaginationModel(options: PaginationModelOptions) {

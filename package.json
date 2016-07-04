@@ -19,7 +19,8 @@
     "build:main": "tsc --declaration",
     "build:umd": "webpack --output-filename ultimate-pagination.js",
     "build:umd.min": "webpack --output-filename ultimate-pagination.min.js -p",
-    "test": "karma start"
+    "test": "karma start",
+    "lint": "tslint src/* test/*"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,7 @@
     "phantomjs-prebuilt": "^2.1.7",
     "source-map-loader": "^0.1.5",
     "ts-loader": "^0.8.2",
+    "tslint": "^3.13.0",
     "typescript": "^1.8.10",
     "webpack": "^1.13.0"
   }
