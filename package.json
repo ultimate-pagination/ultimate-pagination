@@ -20,7 +20,13 @@
     "build:umd": "webpack --output-filename ultimate-pagination.js",
     "build:umd.min": "webpack --output-filename ultimate-pagination.min.js -p",
     "test": "karma start",
-    "lint": "tslint src/* test/*"
+    "lint": "tslint src/* test/*",
+    "validate": "npm-run-all --parallel test lint"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run validate"
+    }
   },
   "repository": {
     "type": "git",
@@ -33,12 +39,13 @@
   },
   "homepage": "https://github.com/ultimate-pagination/ultimate-pagination#readme",
   "devDependencies": {
+    "ghooks": "^1.3.1",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.22",
     "karma-jasmine": "^0.3.8",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-webpack": "^1.7.0",
-    "npm-run-all": "^1.8.0",
+    "npm-run-all": "^2.3.0",
     "phantomjs-prebuilt": "^2.1.7",
     "source-map-loader": "^0.1.5",
     "ts-loader": "^0.8.2",
