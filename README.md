@@ -2,7 +2,7 @@
 
 # ultimate-pagination
 
-[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url]
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status][travis-image]](travis-url)
 
 Universal pagination model generation algorithm that can be used to build a UI component for any JavaScript based platform/framework. The idea behind this module is to move the logic of creating pagination out of the component and place it in a separate module. It allows reusing the same code across different frameworks like Angular, Angular2, React, Ember, etc. Also, the same code can be used to generate pagination on server-side JavaScript frameworks.
 
@@ -131,3 +131,5 @@ Here is a list that contains all available `ITEM_TYPES`:
 [downloads-image]: https://img.shields.io/npm/dm/ultimate-pagination.svg
 [npm-url]: https://www.npmjs.com/package/ultimate-pagination
 [npm-image]: https://img.shields.io/npm/v/ultimate-pagination.svg
+[travis-image]: https://travis-ci.org/ultimate-pagination/ultimate-pagination.svg?branch=master
+[travis-url]: https://travis-ci.org/ultimate-pagination/ultimate-pagination
