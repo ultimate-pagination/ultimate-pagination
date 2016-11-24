@@ -1,6 +1,6 @@
 {
   "name": "ultimate-pagination",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Universal pagination model generation algorithm that can be used to build a UI component",
   "keywords": [
     "pagination",
