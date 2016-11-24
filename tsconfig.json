@@ -4,10 +4,13 @@
         "target": "es5",
         "noImplicitAny": true,
         "sourceMap": true,
-        "rootDir": "src",
         "outDir": "lib"
     },
+    "include": [
+        "src/**/*"
+    ],
     "exclude": [
-      "node_modules"
+        "node_modules",
+        "test"
     ]
 }
