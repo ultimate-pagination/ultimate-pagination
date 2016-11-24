@@ -41,8 +41,8 @@ export const createPreviousPageLink = (options: PaginationModelOptions): Paginat
   let {currentPage} = options;
 
   return {
-    type: ITEM_TYPES.PREVIOS_PAGE_LINK,
-    key: ITEM_KEYS.PREVIOS_PAGE_LINK,
+    type: ITEM_TYPES.PREVIOUS_PAGE_LINK,
+    key: ITEM_KEYS.PREVIOUS_PAGE_LINK,
     value: Math.max(1, currentPage - 1),
     isActive: currentPage === 1
    };

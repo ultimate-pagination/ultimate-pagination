@@ -34,7 +34,7 @@ The main method of **ultimate-pagination** module is `getPaginationModel(options
 var ultimatePagination = require('ultimate-pagination');
 
 var paginationModel = ultimatePagination.getPaginationModel({
-  currentPage: 5, 
+  currentPage: 5,
   totalPages: 10
 });
 ```
@@ -50,8 +50,8 @@ As a result `getPaginationModel(options)` returns an array of items that can be 
     isActive: false
   },
   {
-    type: ITEM_TYPES.PREVIOS_PAGE_LINK,
-    key: ITEM_KEYS.PREVIOS_PAGE_LINK,
+    type: ITEM_TYPES.PREVIOUS_PAGE_LINK,
+    key: ITEM_KEYS.PREVIOUS_PAGE_LINK,
     value: 4,
     isActive: false
   },
@@ -124,7 +124,7 @@ Here is a list that contains all available `ITEM_TYPES`:
 - `PAGE` - a link to a page
 - `ELLIPSIS` - an item that represents groups of pages that currently are not visible in paginator (can be used to navigate to the page in the group that is the nearest to the current page)
 - `FIRST_PAGE_LINK` - a link to the first page
-- `PREVIOS_PAGE_LINK` - a link to the previous page
+- `PREVIOUS_PAGE_LINK` - a link to the previous page
 - `NEXT_PAGE_LINK` - a link to the next page
 - `LAST_PAGE_LINK` - a link to the last page
 
