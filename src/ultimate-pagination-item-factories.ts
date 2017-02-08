@@ -20,7 +20,7 @@ export const createFirstEllipsis = (pageNumber: number): PaginationModelItem => 
 export const createSecondEllipsis = (pageNumber: number): PaginationModelItem => {
   return {
     type: ITEM_TYPES.ELLIPSIS,
-    key: ITEM_KEYS.SECOND_ELLISPIS,
+    key: ITEM_KEYS.SECOND_ELLIPSIS,
     value: pageNumber,
     isActive: false
   };
