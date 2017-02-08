@@ -11,7 +11,7 @@ describe('getPaginationModel', function() {
         { type: ITEM_TYPES.PAGE, key: 3, value: 3, isActive: false },
         { type: ITEM_TYPES.PAGE, key: 4, value: 4, isActive: false },
         { type: ITEM_TYPES.PAGE, key: 5, value: 5, isActive: false },
-        {type: ITEM_TYPES.ELLIPSIS, key: ITEM_KEYS.SECOND_ELLISPIS, value: 6, isActive: false},
+        {type: ITEM_TYPES.ELLIPSIS, key: ITEM_KEYS.SECOND_ELLIPSIS, value: 6, isActive: false},
         { type: ITEM_TYPES.PAGE, key: 8, value: 8, isActive: false },
         { type: ITEM_TYPES.NEXT_PAGE_LINK, key: ITEM_KEYS.NEXT_PAGE_LINK, value: 2, isActive: false },
         { type: ITEM_TYPES.LAST_PAGE_LINK, key: ITEM_KEYS.LAST_PAGE_LINK, value: 8, isActive: false }
@@ -27,7 +27,7 @@ describe('getPaginationModel', function() {
         { type: ITEM_TYPES.PAGE, key: 3, value: 3, isActive: false },
         { type: ITEM_TYPES.PAGE, key: 4, value: 4, isActive: false },
         { type: ITEM_TYPES.PAGE, key: 5, value: 5, isActive: false },
-        { type: ITEM_TYPES.ELLIPSIS, key: ITEM_KEYS.SECOND_ELLISPIS, value: 6, isActive: false },
+        { type: ITEM_TYPES.ELLIPSIS, key: ITEM_KEYS.SECOND_ELLIPSIS, value: 6, isActive: false },
         { type: ITEM_TYPES.PAGE, key: 8, value: 8, isActive: false },
         { type: ITEM_TYPES.NEXT_PAGE_LINK, key: ITEM_KEYS.NEXT_PAGE_LINK, value: 3, isActive: false },
         { type: ITEM_TYPES.LAST_PAGE_LINK, key: ITEM_KEYS.LAST_PAGE_LINK, value: 8, isActive: false }
@@ -43,7 +43,7 @@ describe('getPaginationModel', function() {
         { type: ITEM_TYPES.PAGE, key: 3, value: 3, isActive: true },
         { type: ITEM_TYPES.PAGE, key: 4, value: 4, isActive: false },
         { type: ITEM_TYPES.PAGE, key: 5, value: 5, isActive: false },
-        { type: ITEM_TYPES.ELLIPSIS, key: ITEM_KEYS.SECOND_ELLISPIS, value: 6, isActive: false },
+        { type: ITEM_TYPES.ELLIPSIS, key: ITEM_KEYS.SECOND_ELLIPSIS, value: 6, isActive: false },
         { type: ITEM_TYPES.PAGE, key: 8, value: 8, isActive: false },
         { type: ITEM_TYPES.NEXT_PAGE_LINK, key: ITEM_KEYS.NEXT_PAGE_LINK, value: 4, isActive: false },
         { type: ITEM_TYPES.LAST_PAGE_LINK, key: ITEM_KEYS.LAST_PAGE_LINK, value: 8, isActive: false }
@@ -59,7 +59,7 @@ describe('getPaginationModel', function() {
         { type: ITEM_TYPES.PAGE, key: 3, value: 3, isActive: false },
         { type: ITEM_TYPES.PAGE, key: 4, value: 4, isActive: true },
         { type: ITEM_TYPES.PAGE, key: 5, value: 5, isActive: false },
-        { type: ITEM_TYPES.ELLIPSIS, key: ITEM_KEYS.SECOND_ELLISPIS, value: 6, isActive: false },
+        { type: ITEM_TYPES.ELLIPSIS, key: ITEM_KEYS.SECOND_ELLIPSIS, value: 6, isActive: false },
         { type: ITEM_TYPES.PAGE, key: 8, value: 8, isActive: false },
         { type: ITEM_TYPES.NEXT_PAGE_LINK, key: ITEM_KEYS.NEXT_PAGE_LINK, value: 5, isActive: false },
         { type: ITEM_TYPES.LAST_PAGE_LINK, key: ITEM_KEYS.LAST_PAGE_LINK, value: 8, isActive: false }

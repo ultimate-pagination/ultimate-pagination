@@ -24,7 +24,7 @@ export interface ItemTypes {
 
 export interface ItemKeys {
     FIRST_ELLIPSIS: number;
-    SECOND_ELLISPIS: number;
+    SECOND_ELLIPSIS: number;
     FIRST_PAGE_LINK: number;
     PREVIOUS_PAGE_LINK: number;
     NEXT_PAGE_LINK: number;
@@ -42,7 +42,7 @@ export const ITEM_TYPES: ItemTypes = {
 
 export const ITEM_KEYS: ItemKeys = {
   FIRST_ELLIPSIS: -1,
-  SECOND_ELLISPIS: -2,
+  SECOND_ELLIPSIS: -2,
   FIRST_PAGE_LINK: -3,
   PREVIOUS_PAGE_LINK: -4,
   NEXT_PAGE_LINK: -5,
