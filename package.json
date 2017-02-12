@@ -37,16 +37,16 @@
   "devDependencies": {
     "husky": "^0.13.1",
     "jasmine-core": "^2.4.1",
-    "karma": "^0.13.22",
-    "karma-jasmine": "^0.3.8",
+    "karma": "^1.4.1",
+    "karma-jasmine": "^1.1.0",
     "karma-phantomjs-launcher": "^1.0.0",
-    "karma-webpack": "^1.7.0",
+    "karma-webpack": "^2.0.2",
     "npm-run-all": "^4.0.1",
     "phantomjs-prebuilt": "^2.1.7",
     "source-map-loader": "^0.1.5",
-    "ts-loader": "^0.8.2",
+    "ts-loader": "^2.0.0",
     "tslint": "^3.13.0",
     "typescript": "^1.8.10",
-    "webpack": "^1.13.0"
+    "webpack": "^2.2.1"
   }
 }

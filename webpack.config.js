@@ -7,18 +7,20 @@ module.exports = {
   },
   devtool: 'source-map',
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
+    extensions: ['.webpack.js', '.web.js', '.ts', '.tsx', '.js']
   },
   module: {
-    loaders: [
+    rules: [
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+        loader: 'source-map-loader'
+      },
       {
         test: /\.tsx?$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'ts-loader'
       }
-    ],
-    preLoaders: [
-      { test: /\.js$/, loader: "source-map-loader" }
     ]
   }
 };
