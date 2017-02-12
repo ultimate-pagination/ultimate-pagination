@@ -15,7 +15,11 @@ export interface PaginationModelOptions {
   totalPages: number;
 }
 
-export function getPaginationModel(options: PaginationModelOptions) {
+export {PaginationModelItem};
+
+export type PaginationModel = PaginationModelItem[];
+
+export function getPaginationModel(options: PaginationModelOptions): PaginationModel {
   const {currentPage, totalPages} = options;
   const paginationModel: PaginationModelItem[] = [];
   const createPage = createPageFunctionFactory(options);
@@ -57,4 +61,4 @@ export function getPaginationModel(options: PaginationModelOptions) {
   return paginationModel;
 }
 
-export {ITEM_TYPES, ITEM_KEYS} from './ultimate-pagination-constants';
+export {ITEM_TYPES, ITEM_KEYS, PaginationItemType} from './ultimate-pagination-constants';

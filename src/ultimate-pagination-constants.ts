@@ -29,6 +29,8 @@ export interface ItemKeys {
     PREVIOUS_PAGE_LINK: number;
     NEXT_PAGE_LINK: number;
     LAST_PAGE_LINK: number;
+
+    [type: string]: number;
 }
 
 export const ITEM_TYPES: ItemTypes = {
