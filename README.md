@@ -28,7 +28,9 @@ npm install ultimate-pagination --save
 
 ## Usage
 
-The main method of **ultimate-pagination** module is `getPaginationModel(options)`. It accepts an object with `currentPage`, `totalPages` and `boundaryPagesRange` (optional, default: 1) properties:
+The main method of **ultimate-pagination** module is `getPaginationModel(options)`.
+It accepts an object with `currentPage`, `totalPages`, `boundaryPagesRange` (optional, default: 1) and
+`siblingPagesRange` (optional, default: 1) properties:
 
 ```javascript
 var ultimatePagination = require('ultimate-pagination');
@@ -39,7 +41,8 @@ var paginationModel = ultimatePagination.getPaginationModel({
   totalPages: 10,
 
   // Optional
-  boundaryPagesRange: 1
+  boundaryPagesRange: 1,
+  siblingPagesRange: 1
 });
 ```
 
