@@ -15,6 +15,7 @@ export interface PaginationModelOptions {
   totalPages: number;
   boundaryPagesRange?: number;
   siblingPagesRange?: number;
+  hideEllipsis?: boolean;
 }
 
 export {PaginationModelItem};
@@ -26,8 +27,10 @@ export function getPaginationModel(options: PaginationModelOptions): PaginationM
     currentPage,
     totalPages,
     boundaryPagesRange = 1,
-    siblingPagesRange = 1
+    siblingPagesRange = 1,
+    hideEllipsis = false
   } = options;
+  const ellipsisSize = (hideEllipsis ? 0 : 1);
   const paginationModel: PaginationModelItem[] = [];
   const createPage = createPageFunctionFactory(options);
 
@@ -35,7 +38,7 @@ export function getPaginationModel(options: PaginationModelOptions): PaginationM
   paginationModel.push(createPreviousPageLink(options));
 
   // Simplify generation of pages if number of available items is equal or greater than total pages to show
-  if (1 + 2 + siblingPagesRange * 2 + boundaryPagesRange * 2 >= totalPages) {
+  if (1 + 2 * ellipsisSize + 2 * siblingPagesRange + 2 * boundaryPagesRange >= totalPages) {
     const allPages = createRange(1,  totalPages).map(createPage);
     paginationModel.push(...allPages);
   } else {
@@ -50,29 +53,42 @@ export function getPaginationModel(options: PaginationModelOptions): PaginationM
     const lastPages = createRange(lastPagesStart, lastPagesEnd).map(createPage);
 
     // Calculate group of main pages
-    const mainPagesStart = Math.min(Math.max(currentPage - siblingPagesRange, firstPagesEnd + 2), lastPagesStart - 2 - 2 * siblingPagesRange);
+    const mainPagesStart = Math.min(
+      Math.max(
+        currentPage - siblingPagesRange,
+        firstPagesEnd + ellipsisSize + 1
+      ),
+      lastPagesStart - ellipsisSize - 2 * siblingPagesRange - 1
+    );
     const mainPagesEnd = mainPagesStart + 2 * siblingPagesRange;
     const mainPages = createRange(mainPagesStart,  mainPagesEnd).map(createPage);
 
-    // Calculate ellipsis before group of main pages
-    const firstEllipsisPageNumber = mainPagesStart - 1;
-    const showPageInsteadOfFirstEllipsis = (firstEllipsisPageNumber === firstPagesEnd + 1);
-    const createFirstEllipsisOrPage = showPageInsteadOfFirstEllipsis ? createPage : createFirstEllipsis;
-    const firstEllipsis = createFirstEllipsisOrPage(firstEllipsisPageNumber);
+    // Add group of first pages
+    paginationModel.push(...firstPages);
 
-    // Calculate ellipsis after group of main pages
-    const secondEllipsisPageNumber = mainPagesEnd + 1;
-    const showPageInsteadOfSecondEllipsis = (secondEllipsisPageNumber === lastPagesStart - 1);
-    const createSecondEllipsisOrPage = showPageInsteadOfSecondEllipsis ? createPage : createSecondEllipsis;
-    const secondEllipsis = createSecondEllipsisOrPage(secondEllipsisPageNumber);
+    if (!hideEllipsis) {
+      // Calculate and add ellipsis before group of main pages
+      const firstEllipsisPageNumber = mainPagesStart - 1;
+      const showPageInsteadOfFirstEllipsis = (firstEllipsisPageNumber === firstPagesEnd + 1);
+      const createFirstEllipsisOrPage = showPageInsteadOfFirstEllipsis ? createPage : createFirstEllipsis;
+      const firstEllipsis = createFirstEllipsisOrPage(firstEllipsisPageNumber);
+      paginationModel.push(firstEllipsis);
+    }
 
-    paginationModel.push(
-      ...firstPages,
-      firstEllipsis,
-      ...mainPages,
-      secondEllipsis,
-      ...lastPages
-    );
+    // Add group of main pages
+    paginationModel.push(...mainPages);
+
+    if (!hideEllipsis) {
+      // Calculate and add ellipsis after group of main pages
+      const secondEllipsisPageNumber = mainPagesEnd + 1;
+      const showPageInsteadOfSecondEllipsis = (secondEllipsisPageNumber === lastPagesStart - 1);
+      const createSecondEllipsisOrPage = showPageInsteadOfSecondEllipsis ? createPage : createSecondEllipsis;
+      const secondEllipsis = createSecondEllipsisOrPage(secondEllipsisPageNumber);
+      paginationModel.push(secondEllipsis);
+    }
+
+    // Add group of last pages
+    paginationModel.push(...lastPages);
   }
 
   paginationModel.push(createNextPageLink(options));
