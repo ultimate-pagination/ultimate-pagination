@@ -14,6 +14,7 @@ export interface PaginationModelOptions {
   currentPage: number;
   totalPages: number;
   boundaryPagesRange?: number;
+  siblingPagesRange?: number;
 }
 
 export {PaginationModelItem};
@@ -21,8 +22,12 @@ export {PaginationModelItem};
 export type PaginationModel = PaginationModelItem[];
 
 export function getPaginationModel(options: PaginationModelOptions): PaginationModel {
-  const {currentPage, totalPages, boundaryPagesRange = 1} = options;
-  const siblingPagesRange = 1;
+  const {
+    currentPage,
+    totalPages,
+    boundaryPagesRange = 1,
+    siblingPagesRange = 1
+  } = options;
   const paginationModel: PaginationModelItem[] = [];
   const createPage = createPageFunctionFactory(options);
 
@@ -45,8 +50,8 @@ export function getPaginationModel(options: PaginationModelOptions): PaginationM
     const lastPages = createRange(lastPagesStart, lastPagesEnd).map(createPage);
 
     // Calculate group of main pages
-    const mainPagesStart = Math.min(Math.max(currentPage - 1, firstPagesEnd + 2), lastPagesStart - 4);
-    const mainPagesEnd = mainPagesStart + 2;
+    const mainPagesStart = Math.min(Math.max(currentPage - siblingPagesRange, firstPagesEnd + 2), lastPagesStart - 2 - 2 * siblingPagesRange);
+    const mainPagesEnd = mainPagesStart + 2 * siblingPagesRange;
     const mainPages = createRange(mainPagesStart,  mainPagesEnd).map(createPage);
 
     // Calculate ellipsis before group of main pages
