@@ -29,8 +29,12 @@ npm install ultimate-pagination --save
 ## Usage
 
 The main method of **ultimate-pagination** module is `getPaginationModel(options)`.
-It accepts an object with `currentPage`, `totalPages`, `boundaryPagesRange` (optional, default: 1) and
-`siblingPagesRange` (optional, default: 1) properties:
+It accepts an object with properties:
+- `currentPage` (number) - current page number
+- `totalPages` (number) - total number of pages
+- `boundaryPagesRange` (number, optional, default: 1) - number of always visible pages at the beginning and end
+- `siblingPagesRange` (number, optional, default: 1) - number of always visible pages before and after the current one
+- `hideEllipsis` (boolean, optional, default: false) - boolean flag to hide ellipsis
 
 ```javascript
 var ultimatePagination = require('ultimate-pagination');
@@ -42,7 +46,8 @@ var paginationModel = ultimatePagination.getPaginationModel({
 
   // Optional
   boundaryPagesRange: 1,
-  siblingPagesRange: 1
+  siblingPagesRange: 1,
+  hideEllipsis: false
 });
 ```
 
