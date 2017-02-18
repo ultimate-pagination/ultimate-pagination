@@ -35,6 +35,8 @@ It accepts an object with properties:
 - `boundaryPagesRange` (number, optional, default: 1) - number of always visible pages at the beginning and end
 - `siblingPagesRange` (number, optional, default: 1) - number of always visible pages before and after the current one
 - `hideEllipsis` (boolean, optional, default: false) - boolean flag to hide ellipsis
+- `hidePreviousAndNextPageLinks` (boolean, optional, default: false) - boolean flag to hide previous and next page links
+- `hideFirstAndLastPageLinks` (boolean, optional, default: false) - boolean flag to hide first and last page links
 
 ```javascript
 var ultimatePagination = require('ultimate-pagination');
@@ -47,7 +49,9 @@ var paginationModel = ultimatePagination.getPaginationModel({
   // Optional
   boundaryPagesRange: 1,
   siblingPagesRange: 1,
-  hideEllipsis: false
+  hideEllipsis: false,
+  hidePreviousAndNextPageLinks: false,
+  hideFirstAndLastPageLinks: false
 });
 ```
 
