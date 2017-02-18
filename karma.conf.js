@@ -5,12 +5,12 @@ module.exports = function(config) {
     basePath: '',
     frameworks: ['jasmine'],
     files: [
-      'test/*-test.ts'
+      'test/**/*-test.ts'
     ],
     exclude: [
     ],
     preprocessors: {
-      'test/*-test.ts': ['webpack']
+      'test/**/*-test.ts': ['webpack']
     },
     webpack: {
       resolve: webpackConfig.resolve,

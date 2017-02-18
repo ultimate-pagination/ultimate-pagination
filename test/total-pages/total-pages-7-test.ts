@@ -1,5 +1,5 @@
-import './test-helpers';
-import {getPaginationModel} from '../src/ultimate-pagination';
+import '../test-helpers';
+import {getPaginationModel} from '../../src/ultimate-pagination';
 
 describe('getPaginationModel', function() {
   describe('when there are 7 pages', function() {

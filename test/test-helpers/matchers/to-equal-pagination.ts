@@ -4,7 +4,7 @@ import {
     ITEM_TYPES,
     ITEM_KEYS,
     PaginationItemType
-} from '../../src/ultimate-pagination';
+} from '../../../src/ultimate-pagination';
 
 interface SymbolToTypeMap {
     [symbol: string]: PaginationItemType;

@@ -13,6 +13,7 @@ import {
 export interface PaginationModelOptions {
   currentPage: number;
   totalPages: number;
+  boundaryPagesRange?: number;
 }
 
 export {PaginationModelItem};
@@ -20,41 +21,55 @@ export {PaginationModelItem};
 export type PaginationModel = PaginationModelItem[];
 
 export function getPaginationModel(options: PaginationModelOptions): PaginationModel {
-  const {currentPage, totalPages} = options;
+  const {currentPage, totalPages, boundaryPagesRange = 1} = options;
+  const siblingPagesRange = 1;
   const paginationModel: PaginationModelItem[] = [];
   const createPage = createPageFunctionFactory(options);
-
-  // Calculate group of central pages
-  const mainPagesStart = Math.max(2, Math.max(currentPage - 1, 3) - Math.max(0, currentPage + 3 - totalPages));
-  const mainPagesEnd = Math.min(totalPages - 1, Math.min(currentPage + 1, totalPages - 2) + Math.max(0, 4 - currentPage));
-  const mainPages = createRange(mainPagesStart,  mainPagesEnd).map(createPage);
 
   paginationModel.push(createFirstPageLink(options));
   paginationModel.push(createPreviousPageLink(options));
 
-  // Always add the first page
-  paginationModel.push(createPage(1));
+  // Simplify generation of pages if number of available items is equal or greater than total pages to show
+  if (1 + 2 + siblingPagesRange * 2 + boundaryPagesRange * 2 >= totalPages) {
+    const allPages = createRange(1,  totalPages).map(createPage);
+    paginationModel.push(...allPages);
+  } else {
+    // Calculate group of first pages
+    const firstPagesStart = 1;
+    const firstPagesEnd = boundaryPagesRange;
+    const firstPages = createRange(firstPagesStart,  firstPagesEnd).map(createPage);
 
-  // Show '...' or second page between the last page and main pages group if needed
-  if (mainPagesStart > 3) {
-    paginationModel.push(createFirstEllipsis(mainPagesStart - 1));
-  } else if (mainPagesStart !== 2) {
-    paginationModel.push(createPage(2));
+    // Calculate group of last pages
+    const lastPagesStart = totalPages + 1 - boundaryPagesRange;
+    const lastPagesEnd = totalPages;
+    const lastPages = createRange(lastPagesStart, lastPagesEnd).map(createPage);
+
+    // Calculate group of main pages
+    const mainPagesStart = Math.min(Math.max(currentPage - 1, firstPagesEnd + 2), lastPagesStart - 4);
+    const mainPagesEnd = mainPagesStart + 2;
+    const mainPages = createRange(mainPagesStart,  mainPagesEnd).map(createPage);
+
+    // Calculate ellipsis before group of main pages
+    const firstEllipsisPageNumber = mainPagesStart - 1;
+    const showPageInsteadOfFirstEllipsis = (firstEllipsisPageNumber === firstPagesEnd + 1);
+    const createFirstEllipsisOrPage = showPageInsteadOfFirstEllipsis ? createPage : createFirstEllipsis;
+    const firstEllipsis = createFirstEllipsisOrPage(firstEllipsisPageNumber);
+
+    // Calculate ellipsis after group of main pages
+    const secondEllipsisPageNumber = mainPagesEnd + 1;
+    const showPageInsteadOfSecondEllipsis = (secondEllipsisPageNumber === lastPagesStart - 1);
+    const createSecondEllipsisOrPage = showPageInsteadOfSecondEllipsis ? createPage : createSecondEllipsis;
+    const secondEllipsis = createSecondEllipsisOrPage(secondEllipsisPageNumber);
+
+    paginationModel.push(
+      ...firstPages,
+      firstEllipsis,
+      ...mainPages,
+      secondEllipsis,
+      ...lastPages
+    );
   }
 
-  // Add pages +/- from the current page
-  paginationModel.push(...mainPages);
-
-  // Show '...' or penult page between main pages group and the last page if needed
-  if (mainPagesEnd < totalPages - 2) {
-    paginationModel.push(createSecondEllipsis(mainPagesEnd + 1));
-  } else if (mainPagesEnd !== totalPages - 1) {
-    paginationModel.push(createPage(totalPages - 1));
-  }
-
-  if (totalPages > 1) {
-    paginationModel.push(createPage(totalPages));
-  }
   paginationModel.push(createNextPageLink(options));
   paginationModel.push(createLastPageLink(options));
 
