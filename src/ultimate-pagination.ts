@@ -16,6 +16,8 @@ export interface PaginationModelOptions {
   boundaryPagesRange?: number;
   siblingPagesRange?: number;
   hideEllipsis?: boolean;
+  hidePreviousAndNextPageLinks?: boolean;
+  hideFirstAndLastPageLinks?: boolean;
 }
 
 export {PaginationModelItem};
@@ -28,14 +30,21 @@ export function getPaginationModel(options: PaginationModelOptions): PaginationM
     totalPages,
     boundaryPagesRange = 1,
     siblingPagesRange = 1,
-    hideEllipsis = false
+    hideEllipsis = false,
+    hidePreviousAndNextPageLinks = false,
+    hideFirstAndLastPageLinks = false
   } = options;
   const ellipsisSize = (hideEllipsis ? 0 : 1);
   const paginationModel: PaginationModelItem[] = [];
   const createPage = createPageFunctionFactory(options);
 
-  paginationModel.push(createFirstPageLink(options));
-  paginationModel.push(createPreviousPageLink(options));
+  if (!hideFirstAndLastPageLinks) {
+    paginationModel.push(createFirstPageLink(options));
+  }
+
+  if (!hidePreviousAndNextPageLinks) {
+    paginationModel.push(createPreviousPageLink(options));
+  }
 
   // Simplify generation of pages if number of available items is equal or greater than total pages to show
   if (1 + 2 * ellipsisSize + 2 * siblingPagesRange + 2 * boundaryPagesRange >= totalPages) {
@@ -91,8 +100,13 @@ export function getPaginationModel(options: PaginationModelOptions): PaginationM
     paginationModel.push(...lastPages);
   }
 
-  paginationModel.push(createNextPageLink(options));
-  paginationModel.push(createLastPageLink(options));
+  if (!hidePreviousAndNextPageLinks) {
+    paginationModel.push(createNextPageLink(options));
+  }
+
+  if (!hideFirstAndLastPageLinks) {
+    paginationModel.push(createLastPageLink(options));
+  }
 
   return paginationModel;
 }
