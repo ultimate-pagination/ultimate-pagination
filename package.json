@@ -10,6 +10,7 @@
   "main": "lib/ultimate-pagination.js",
   "typings": "lib/ultimate-pagination.d.ts",
   "files": [
+    "src",
     "dist",
     "lib"
   ],
