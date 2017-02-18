@@ -1,5 +1,5 @@
-import './test-helpers';
-import {getPaginationModel, ITEM_TYPES, ITEM_KEYS} from '../src/ultimate-pagination';
+import '../test-helpers';
+import {getPaginationModel} from '../../src/ultimate-pagination';
 
 describe('getPaginationModel', function() {
   describe('when there are 4 pages', function() {
