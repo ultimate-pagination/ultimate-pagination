@@ -25,15 +25,29 @@ export {PaginationModelItem};
 export type PaginationModel = PaginationModelItem[];
 
 export function getPaginationModel(options: PaginationModelOptions): PaginationModel {
-  const {
-    currentPage,
-    totalPages,
-    boundaryPagesRange = 1,
-    siblingPagesRange = 1,
-    hideEllipsis = false,
-    hidePreviousAndNextPageLinks = false,
-    hideFirstAndLastPageLinks = false
-  } = options;
+  if (options == null) { throw new Error('getPaginationModel(): options object should be a passed'); }
+
+  const totalPages = Number(options.totalPages);
+  if (isNaN(totalPages)) { throw new Error('getPaginationModel(): totalPages should be a number'); }
+  if (totalPages < 0) { throw new Error('getPaginationModel(): totalPages shouldn\'t be a negative number'); }
+
+  const currentPage = Number(options.currentPage);
+  if (isNaN(currentPage)) { throw new Error('getPaginationModel(): currentPage should be a number'); }
+  if (currentPage < 0) { throw new Error('getPaginationModel(): currentPage shouldn\'t be a negative number'); }
+  if (currentPage > totalPages) { throw new Error('getPaginationModel(): currentPage shouldn\'t be greater than totalPages'); }
+
+  const boundaryPagesRange = (options.boundaryPagesRange == null ? 1 : Number(options.boundaryPagesRange));
+  if (isNaN(boundaryPagesRange)) { throw new Error('getPaginationModel(): boundaryPagesRange should be a number'); }
+  if (boundaryPagesRange < 0) { throw new Error('getPaginationModel(): boundaryPagesRange shouldn\'t be a negative number'); }
+
+  const siblingPagesRange = (options.siblingPagesRange == null ? 1 : Number(options.siblingPagesRange));
+  if (isNaN(siblingPagesRange)) { throw new Error('getPaginationModel(): siblingPagesRange should be a number'); }
+  if (siblingPagesRange < 0) { throw new Error('getPaginationModel(): siblingPagesRange shouldn\'t be a negative number'); }
+
+  const hidePreviousAndNextPageLinks = Boolean(options.hidePreviousAndNextPageLinks);
+  const hideFirstAndLastPageLinks = Boolean(options.hideFirstAndLastPageLinks);
+  const hideEllipsis = Boolean(options.hideEllipsis);
+
   const ellipsisSize = (hideEllipsis ? 0 : 1);
   const paginationModel: PaginationModelItem[] = [];
   const createPage = createPageFunctionFactory(options);
