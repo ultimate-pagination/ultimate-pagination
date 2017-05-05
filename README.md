@@ -11,12 +11,8 @@ Universal pagination model generation algorithm that can be used to build a UI c
 Here is a list of modules that uses **ultimate-pagination** to implement pagination components with different frameworks:
 
 - [react-ultimate-pagination](https://github.com/ultimate-pagination/react-ultimate-pagination)
+- [angularjs-ultimate-pagination](https://github.com/ultimate-pagination/angularjs-ultimate-pagination)
 - [angular-ultimate-pagination](https://github.com/ultimate-pagination/angular-ultimate-pagination)
-- [angular2-ultimate-pagination](https://github.com/ultimate-pagination/angular2-ultimate-pagination)
-- [jquery-ultimate-pagination](https://github.com/ultimate-pagination/jquery-ultimate-pagination)
-- [ember-ultimate-pagination](https://github.com/ultimate-pagination/ember-ultimate-pagination)
-- [aurelia-ultimate-pagination](https://github.com/ultimate-pagination/aurelia-ultimate-pagination)
-- [polymer-ultimate-pagination](https://github.com/ultimate-pagination/polymer-ultimate-pagination)
 
 ## Installation
 
